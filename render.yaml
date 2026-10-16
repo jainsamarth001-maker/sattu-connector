@@ -1,0 +1,27 @@
+# Render blueprint for the cloud copy of the connector (free plan).
+# Secrets are NOT stored here: add them in the Render dashboard (Environment tab).
+services:
+  - type: web
+    name: sattu-connector
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: MCP_TRANSPORT
+        value: http
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: LOCAL_TZ
+        value: Australia/Brisbane
+      - key: MCP_PATH_SECRET
+        sync: false
+      - key: ODDS_API_KEY
+        sync: false
+      - key: FOOTBALL_DATA_KEY
+        sync: false
+      - key: API_FOOTBALL_KEY
+        sync: false
+      - key: CRICKETDATA_API_KEY
+        sync: false
